@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
     <title>Joel Hilton Movies</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <!-- This is the shared layout page. It sets the header for each page and has the navigation for each page.-->
 <body>
     <header>
-        <h1>@ViewBag.title</h1>
-        <menu>
-            <li><a asp-action="Index">Home</a></li>
-            <li><a asp-action="Podcasts">Podcasts</a></li>
-            <li><a asp-action="AddMovie">Add Movie</a></li>
-            <li><a asp-action="MovieList">Movie List</a></li>
-        </menu>
+        <h1 class="text-center">@ViewBag.title</h1>
+        <nav class="navbar navbar-dark" >
+            <ul>
+                <li class="text-white nav-item"><a asp-action="Index">Home</a></li>
+                <li class="text-white nav-item"><a asp-action="Podcasts">Podcasts</a></li>
+                <li class="text-white nav-item"><a asp-action="AddMovie">Add Movie</a></li>
+                <li class="text-white nav-item"><a asp-action="MovieList">Movie List</a></li>
+            </ul>
+        </nav>
     </header>
 
     @RenderBody()

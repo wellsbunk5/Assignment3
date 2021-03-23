@@ -4,13 +4,13 @@
 @{
     ViewBag.title = "Complete list of Joel's Movies";
 }
-@model IEnumerable<Assignment3.Models.Movie>
+@model IQueryable<Assignment3.Models.Movie>
 <div>
     <!-- The Movie List page takes the list that the controller passes it and then dynamically builds rows
         on the table and displays the list.-->
-    <table>
-        <thead>
-            <tr>
+    <table class="table table-striped">
+        <thead >
+            <tr class="d-lg-table-row">
                 <th>Category</th>
                 <th>Title</th>
                 <th>Year</th>
@@ -19,22 +19,27 @@
                 <th>Edited</th>
                 <th>Lent To</th>
                 <th>Notes</th>
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach (Assignment3.Models.Movie x in Model)
             {
-                <tr>
-                    <td>@x.Category</td>
-                    <td>@x.Title</td>
-                    <td>@x.Year</td>
-                    <td>@x.Director</td>
-                    <td>@x.Rating</td>
-                    <td>@x.Edited</td>
-                    <td>@x.LentTo</td>
-                    <td>@x.Notes</td>
-                </tr>
+            <tr>
+                <td>@x.Category</td>
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.Notes</td>
+                <td><form method="post" asp-action="Delete"><input type="hidden" name="ID" id="ID" value="@x.MovieId" /> <button class="btn btn-danger" type="submit">Delete</button></form></td>
+                <td><form method="post" asp-action="UpdateForm"><input type="hidden" name="ID" id="ID" value="@x.MovieId" /> <button class="btn btn-info" type="submit">Update</button></form></td>
+
+            </tr>
             }
         </tbody>
     </table>
